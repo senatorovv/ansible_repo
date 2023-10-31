@@ -4,7 +4,7 @@
   tasks:
     - name: Add a new user
       user:
-        name: "hybrid"
-        password: "exploit"
+        name: "{{ new_username }}"
+        password: " {{ new_user_password | password_hash('sha512') }}"
         shell: /bin/bash
         state: present
