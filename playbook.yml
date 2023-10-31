@@ -5,6 +5,6 @@
     - name: Add a new user
       user:
         name: "{{ new_username }}"
-        password: "{{ new_user_password }}"
+        password: "{{ new_user_password | password_hash('sha512') }}"
         shell: /bin/bash
         state: present
