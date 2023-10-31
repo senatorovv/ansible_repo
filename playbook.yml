@@ -8,3 +8,8 @@
         password: "{{ new_user_password | password_hash('sha512') }}"
         shell: /bin/bash
         state: present
+        
+    - name: Remove a user
+      user:
+        name: "{{ username_to_remove }}"
+        state: absent
