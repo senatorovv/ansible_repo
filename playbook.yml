@@ -1,3 +1,10 @@
 ---
-- name: Example from an Ansible Playbook
-  ansible.builtin.ping:
+- name: User Management Playbook
+  hosts: all
+  tasks:
+    - name: Add a new user
+      user:
+        name: "hybrid"
+        password: "exploit"
+        shell: /bin/bash
+        state: present
