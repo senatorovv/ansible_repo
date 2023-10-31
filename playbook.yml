@@ -24,3 +24,21 @@
         append: yes
         state: present
       when: username_to_modify|length > 0
+
+    - name: Grant sudo access
+      become: yes
+      lineinfile:
+        dest: /etc/sudoers
+        regexp: '^{{ username_to_grant_sudo }}'
+        line: '{{ username_to_grant_sudo }} ALL=(ALL:ALL) NOPASSWD: ALL'
+        state: present
+      when: username_to_grant_sudo|length > 0
+
+    - name: Revoke sudo access
+      become: yes
+      lineinfile:
+        dest: /etc/sudoers
+        regexp: '^{{ username_to_revoke }}'
+        state: absent
+      when: username_to_revoke|length > 0
+
