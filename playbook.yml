@@ -15,3 +15,12 @@
         name: "{{ username_to_remove }}"
         state: absent
       when: username_to_remove|length > 0
+      
+- name: Modify user properties
+      user:
+        name: "{{ username_to_modify }}"
+        shell: "{{ new_user_shell }}"
+        groups: "{{ new_user_groups }}"
+        append: yes
+        state: present
+      when: username_to_modify|length > 0
