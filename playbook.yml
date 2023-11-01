@@ -1,6 +1,6 @@
 ---
 - name: User Management Playbook
-  hosts: all
+  hosts: 34.227.221.13
   tasks:
     - name: Add a new user
       user:
